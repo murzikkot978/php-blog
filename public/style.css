@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+.header {
+    background-color: darkslategray;
+    height: 100px;
+    align-content: center;
+    color: white;
+}
+
+.navbar {
+    display: flex;
+    padding-left: 100px;
+    padding-right: 100px;
+    justify-items: center;
+    justify-content: space-between;
+}
+
+.headernavigation {
+    display: flex;
+    gap: 20px;
+}
+
+/* index.php */
+
+
+.pages {
+    display: flex;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.custom-form {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    height: auto;
+    align-items: center;
+    gap: 15px;
+    background-color: rgba(47, 79, 79, 0.3); /* gray-200 with 60% opacity */
+    padding: 50px;
+    margin-top: 50px;
+    border-radius: 20px;
+}
+
+.logoHome {
+    display: flex;
+    width: 45px;
+    height: auto;
+    color: white;
+}
+
+.logoEdit {
+    display: flex;
+    width: 20px;
+    height: auto;
+    top: 10px;
+    left: 10px;
+}
+
+.absolute {
+    position: absolute;
+}
+
+.relative {
+    position: relative;
+}
+
+.colorGrid {
+    background-color: darkslategray;
+    color: white;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.imageGrid {
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.pading300px {
+    padding-left: 300px;
+    padding-right: 300px;
+}
