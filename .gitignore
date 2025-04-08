@@ -3,3 +3,4 @@ database.db
 database.db-journal
 compiled.css
 node_modules
+.idea
