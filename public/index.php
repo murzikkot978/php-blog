@@ -17,7 +17,7 @@
 <?php require "navigationBar.php" ?>
 
 <div class="pages flex-col gap-[20px]">
-    <p class="text-[60px] w-[300px] flex justify-center">PHP Blog</p>
+    <p class="text-[60px] w-[300px]">PHP Blog</p>
     <div>
         <p class="text-[30px]">On this page you can see all blogs what we have on our site</p>
     </div>
