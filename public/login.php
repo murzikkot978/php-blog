@@ -1,5 +1,4 @@
 <?php
-require_once "conditions.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">

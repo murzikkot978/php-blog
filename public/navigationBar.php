@@ -2,6 +2,7 @@
 require_once "conditions.php";
 login();
 $user = checkLogin();
+logout();
 ?>
 
 <header class="header">
@@ -14,9 +15,9 @@ $user = checkLogin();
                 <div class="flex gap-[20px]">
                     <a href="postCreation.php" class="flex text-[20px]">postCreation</a>
                 </div>
-                <div>
-                    <button type="submit" class="flex text-[20px]">log out</button>
-                </div>
+                <form method="post">
+                    <button type="submit" name="logout" value="logout" class="flex text-[20px]">log out</button>
+                </form>
             <?php else: ?>
                 <div>
                     <a href="login.php" class="flex text-[20px]">log in</a>
