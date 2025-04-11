@@ -1,5 +1,5 @@
 <?php
-
+require_once "conditions.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,16 +18,15 @@
 <div class="flex flex-col gap-[20px] justify-center items-center w-full h-full ">
     <div class="flex flex-col w-[100%] h-[100%] justify-center items-center">
         <p class="text-[60px] w-[300px] flex justify-center">Log in</p><br>
-        <form class="custom-form">
 
-            <label for="name" class="text-[20px]">Write your name</label>
-            <input name="name" type="text" class="border-[2px]"><br>
+        <?php require "functions/loginUser.php" ?>
 
+        <form method="post" class="custom-form">
             <label for="email" class="text-[20px]">Write email</label>
             <input name="email" type="email" class="border-[2px]"><br>
 
-            <label for="pasword" class="text-[20px]">Write pasword</label>
-            <input name="pasword" type="text" class="border-[2px]"><br>
+            <label for="password" class="text-[20px]">Write pasword</label>
+            <input name="password" type="password" class="border-[2px]"><br>
 
             <button type="submit" class="border-[2px] w-[100px]">Submit</button>
             <div class="flex gap-[15px]">
