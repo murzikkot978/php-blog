@@ -1,9 +1,9 @@
 <?php
 $errors = [];
-$name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
-$email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
-$password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
+    $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+    $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
     $dsn = 'sqlite:../database.db';
     $user = 'root';
     $pass = '';
@@ -17,16 +17,19 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
         $cheking = $pdo->prepare("SELECT * FROM users WHERE email = :email");
         $cheking->execute(["email" => $email]);
-        if ($email !== $cheking) {
+        $user = $cheking->fetch();
+        if (empty($user)) {
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
             $stmt = $pdo->prepare("INSERT INTO users (name, email, password) VALUES (:name, :email, :password)");
             $stmt->execute(["name" => $name, "email" => $email, "password" => $hashed_password]);
             header("Location: login.php");
             exit();
+        } else {
+            array_push($errors, "Email already exists");
         }
 
     } catch (Exception $e) {
-        array_push($errors, "Email already exists!");
+        array_push($errors, "An error occurred, please try again later");
     }
 }
 ?>
