@@ -6,16 +6,21 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $content = filter_input(INPUT_POST, 'content', FILTER_SANITIZE_EMAIL);
     $userID = $_SESSION['userID'];
 
-    require "databaseconection.php";
+    if ($title === "" || $content === "") {
+        array_push($errors, "Title and Content cannot be empty.");
+    } else {
 
-    try {
+        require "functions/saveImage.php";
+        require "databaseconection.php";
+        try {
 
-        $stmt = $pdo->prepare("INSERT INTO blog (title, content, image, user_id) VALUES (:title, :content, :image, :user_id)");
-        $stmt->execute(["title" => $title, "content" => $content, "image" => $image, "user_id" => $userID]);
-        header("Location: ../index.php");
-        exit();
+            $stmt = $pdo->prepare("INSERT INTO blog (title, content, image, user_id) VALUES (:title, :content, :image, :user_id)");
+            $stmt->execute(["title" => $title, "content" => $content, "image" => $image, "user_id" => $userID]);
+            header("Location: ../index.php");
+            exit();
 
-    } catch (Exception $e) {
-        array_push($errors, "An error occurred, please try again later : " . $e);
+        } catch (Exception $e) {
+            array_push($errors, "An error occurred, please try again later");
+        }
     }
 }

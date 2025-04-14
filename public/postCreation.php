@@ -3,7 +3,6 @@ require_once "conditions.php";
 login();
 $errors = [];
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    require "functions/saveImage.php";
     require "functions/newPost.php";
 }
 
