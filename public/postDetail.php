@@ -1,4 +1,7 @@
 <?php
+$errors = [];
+
+require "functions/getPost.php";
 
 ?>
 <!DOCTYPE html>
@@ -16,15 +19,23 @@
 <?php require "navigationBar.php" ?>
 
 <div class="pages flex-col gap-[20px] pading300px">
-    <div class="flex flex-col justify-center">
-        <p class="text-[20px]">Date creation</p>
-        <p class="text-[20px]">Name creator</p>
-    </div>
-    <div class="flex flex-col gap-[20px] items-center">
-        <p class="flex text-[30px]">Title</p>
-        <img src="images/image1.jpg" class="flex w-full rounded-[20px]">
-        <p class="flex text-[20px]">Content for this post</p>
-    </div>
+    <?php if (count($errors) > 0): ?>
+        <ul>
+            <?php foreach ($errors as $error): ?>
+                <li class="text-[red] text-[20px]"><?= $error ?></li>
+            <?php endforeach ?>
+        </ul>
+    <?php else: ?>
+        <div class="flex flex-col justify-center">
+            <p class="text-[20px] font-[700]">Create at : <?= $post["create_at"] ?></p>
+            <p class="text-[20px] font-[700]">Created by : <?= $post["name"] ?></p>
+        </div>
+        <div class="flex flex-col gap-[20px] items-center">
+            <p class="flex text-[50px] font-[1000]"><?= $post["title"] ?></p>
+            <img src="images/<?= $post["image"] ?>" class="flex w-full rounded-[20px]">
+            <p class="flex text-[25px]"><?= $post["content"] ?></p>
+        </div>
+    <?php endif ?>
 </div>
 
 </body>
