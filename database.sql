@@ -13,7 +13,7 @@ create table blog
 (
     id        integer primary key autoincrement,
     title     text    not null,
-    image     text,
+    image     text    not null,
     content   text    not null,
     create_at datetime default current_timestamp,
     user_id   INTEGER not null,
