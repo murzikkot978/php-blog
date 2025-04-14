@@ -1,4 +1,11 @@
 <?php
+$errors = [];
+require_once "conditions.php";
+login();
+require "functions/getBlogs.php";
+if (empty($posts)) {
+    array_push($errors, "There are no blogs yet");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,69 +27,36 @@
     <div>
         <p class="text-[30px]">On this page you can see all blogs what we have on our site</p>
     </div>
-    <div class="flex justify-center">
+    <div class="flex flex-col items-center">
         <p class="text-[60px] w-[200px] flex justify-center">Posts</p>
+
+    <?php if (count($errors) > 0): ?>
+        <ul>
+            <?php foreach ($errors as $error): ?>
+                <li class="text-[red] text-[20px]"><?= $error ?></li>
+            <?php endforeach ?>
+        </ul>
+    <?php endif ?>
     </div>
     <div class="grid grid-cols-2 gap-[10px]">
-        <div class="w-full h-auto ">
-            <div class="w-full flex flex-col items-center colorGrid">
-                <p class="text-center  text-[30px]">
-                    Title
-                </p>
-            </div>
+        <?php foreach ($posts as $post): ?>
+            <div class="w-full h-auto ">
+                <div class="w-full flex flex-col items-center colorGrid">
+                    <p class="text-center  text-[30px]">
+                        <?php echo $post['title'] ?>
+                    </p>
+                </div>
 
-            <div class="relative">
-                <a href="postDetail.php">
-                    <img src="images/image1.jpg" class="flex w-full h-auto imageGrid object-cover">
-                </a>
-                <a href="postEdition.php" class="absolute logoEdit"><img src="logos/logoEdit.png" alt="Logo edit"></a>
+                <div class="relative">
+                    <a href="postDetail.php">
+                        <img src="images/<?php echo $post["image"] ?>"
+                             class="flex w-full h-auto imageGrid object-cover" alt="Post image">
+                    </a>
+                    <a href="postEdition.php" class="absolute logoEdit"><img src="logos/logoEdit.png"
+                                                                             alt="Logo edit"></a>
+                </div>
             </div>
-        </div>
-
-        <div class="w-full h-auto ">
-            <div class="w-full flex flex-col items-center colorGrid">
-                <p class="text-center text-[30px]">
-                    Title
-                </p>
-            </div>
-
-            <div class="relative">
-                <a href="postDetail.php">
-                    <img src="images/image2.jpg" class="flex w-full h-auto imageGrid object-cover">
-                </a>
-                <a href="postEdition.php" class="absolute logoEdit"><img src="logos/logoEdit.png" alt="Logo edit"></a>
-            </div>
-        </div>
-
-        <div class="w-full h-auto ">
-            <div class="w-full flex flex-col items-center colorGrid">
-                <p class="text-center text-[30px]">
-                    Title
-                </p>
-            </div>
-
-            <div class="relative">
-                <a href="postDetail.php" class="postlink">
-                    <img src="images/image2.jpg" class="flex w-full h-auto imageGrid object-cover">
-                </a>
-                <a href="postEdition.php" class="absolute logoEdit"><img src="logos/logoEdit.png" alt="Logo edit"></a>
-            </div>
-        </div>
-
-        <div class="w-full h-auto ">
-            <div class="w-full flex flex-col items-center colorGrid">
-                <p class="text-center  text-[30px]">
-                    Title
-                </p>
-            </div>
-
-            <div class="relative">
-                <a href="postDetail.php" class="postlink">
-                    <img src="images/image1.jpg" class="flex w-full h-auto imageGrid object-cover">
-                </a>
-                <a href="postEdition.php" class="absolute logoEdit"><img src="logos/logoEdit.png" alt="Logo edit"></a>
-            </div>
-        </div>
+        <?php endforeach ?>
     </div>
 </div>
 
