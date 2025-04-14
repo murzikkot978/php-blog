@@ -11,7 +11,6 @@ function logout()
 {
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $logout = filter_input(INPUT_POST, 'logout', FILTER_SANITIZE_STRING);
-        var_dump($logout);
         if (isset($_POST[$logout])) {
             session_start();
             session_unset();
