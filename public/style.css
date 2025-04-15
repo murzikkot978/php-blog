@@ -49,14 +49,6 @@
     color: white;
 }
 
-.logoEdit {
-    display: flex;
-    width: 20px;
-    height: auto;
-    top: 10px;
-    left: 10px;
-}
-
 .absolute {
     position: absolute;
 }
