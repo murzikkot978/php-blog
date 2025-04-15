@@ -2,6 +2,8 @@
 require_once "conditions.php";
 login();
 $errors = [];
+$user = checkLogin();
+connection($user);
 require "functions/newPost.php";
 
 ?>

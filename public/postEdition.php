@@ -2,7 +2,11 @@
 require_once "conditions.php";
 login();
 $errors = [];
+$user = checkLogin();
 require "functions/getPost.php";
+$user_id = $post['user_id'];
+connection($user);
+verificationID($user_id);
 require "functions/editPost.php";
 ?>
 <!DOCTYPE html>

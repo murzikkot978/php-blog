@@ -38,3 +38,18 @@ function checkLogin()
         return false;
     }
 }
+
+function connection($user)
+{
+    if (!isset($user) || $user === false) {
+        header('Location: login.php');
+    }
+}
+
+function verificationID($user_id)
+{
+    if ($_SESSION['userID'] !== $user_id) {
+        header("Location: index.php");
+        exit();
+    }
+}
