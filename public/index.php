@@ -2,6 +2,7 @@
 $errors = [];
 require_once "conditions.php";
 login();
+$user = checkLogin();
 require "functions/getBlogs.php";
 if (empty($posts)) {
     array_push($errors, "There are no blogs yet");
@@ -53,18 +54,20 @@ require "functions/deletePost.php";
                         <img src="images/<?php echo $post["image"] ?>"
                              class="flex w-full h-auto imageGrid object-cover" alt="Post image">
                     </a>
-                    <a href="postEdition.php?id=<?= $post["id"] ?>"
-                       class="absolute flex w-[30px] h-auto top-[-37px] left-[10px]"><img src="logos/logoEdit.png"
-                                                                                          alt="Logo edit">
-                    </a>
-                    <form method="post">
-                        <input type="hidden" value="<?= $post['id'] ?>" name="deletePost">
-                        <input type="hidden" value="<?= $post['image'] ?>" name="deleteImage">
-                        <button type="submit" name="delete"
-                                class="absolute flex w-[30px] h-auto top-[-37px] left-[60px]"><img
-                                    src="logos/logoCorbeille.png"
-                                    alt="Logo delete"></button>
-                    </form>
+                    <?php if ($user && $user === $post['user_id']): ?>
+                        <a href="postEdition.php?id=<?= $post["id"] ?>"
+                           class="absolute flex w-[30px] h-auto top-[-37px] left-[10px]"><img src="logos/logoEdit.png"
+                                                                                              alt="Logo edit">
+                        </a>
+                        <form method="post">
+                            <input type="hidden" value="<?= $post['id'] ?>" name="deletePost">
+                            <input type="hidden" value="<?= $post['image'] ?>" name="deleteImage">
+                            <button type="submit" name="delete"
+                                    class="absolute flex w-[30px] h-auto top-[-37px] left-[60px]"><img
+                                        src="logos/logoCorbeille.png"
+                                        alt="Logo delete"></button>
+                        </form>
+                    <?php endif ?>
                 </div>
             </div>
         <?php endforeach ?>
