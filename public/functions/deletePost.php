@@ -10,7 +10,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->execute(['id' => $deletePostId]);
             header("Location: ../index.php");
         } catch (Exception $e) {
-            array_push($errors, "An error occurred, please try again later");
+            add_flash_message("An error occurred, please try again later");
         }
+    } else {
+        add_flash_message("Can not change image.");
     }
 }

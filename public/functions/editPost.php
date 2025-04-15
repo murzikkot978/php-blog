@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $postID = filter_input(INPUT_POST, 'postID', FILTER_SANITIZE_NUMBER_INT);
     $oldImage = filter_input(INPUT_POST, 'oldImage', FILTER_SANITIZE_STRING);
     if ($title === "" || $content === "") {
-        array_push($errors, "Title and Content cannot be empty.");
+        add_flash_message("Title and Content cannot be empty.");
     } else {
 
         if (!empty($image)) {
@@ -21,10 +21,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                     $stmt->execute(["title" => $title, "content" => $content, "image" => $image, "id" => $postID]);
                     header("Location: ../index.php");
                 } catch (Exception $e) {
-                    array_push($errors, "An error occurred, please try again later");
+                    add_flash_message("An error occurred, please try again later");
                 }
             } else {
-                array_push($errors, "Can not change image.");
+                add_flash_message("Can not change image.");
                 unlink("./images/" . $image);
             }
         } else {
@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 $stmt->execute(["title" => $title, "content" => $content, "id" => $postID]);
                 header("Location: ../index.php");
             } catch (Exception $e) {
-                array_push($errors, "An error occurred, please try again later");
+                add_flash_message("An error occurred, please try again later");
             }
         }
     }

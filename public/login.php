@@ -1,4 +1,6 @@
 <?php
+session_start();
+require "functions/flashMessage.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,6 +21,7 @@
         <p class="text-[60px] w-[300px] flex justify-center">Log in</p><br>
 
         <?php require "functions/loginUser.php" ?>
+        <?php require "functions/displayMessage.php" ?>
 
         <form method="post" class="custom-form">
             <label for="email" class="text-[20px]">Write email</label>

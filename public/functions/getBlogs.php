@@ -5,5 +5,5 @@ try {
     $stmt->execute();
     $posts = $stmt->fetchAll();
 } catch (Exception $e) {
-    array_push($errors, "An error occurred, please try again later");
+    add_flash_message("An error occurred, please try again later");
 }

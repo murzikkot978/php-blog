@@ -10,31 +10,33 @@ if ($_FILES["image"]["name"] !== "") {
     if($_FILES["image"]["name"] === "") {
         $check = getimagesize($_FILES["image"]["tmp_name"]);
         if($check !== false) {
-            array_push($errors, "File is an image - " . $check["mime"] . ".");
+            add_flash_message('File is an image - ' . $check["mime"] . '.');
             $uploadOk = 1;
         } else {
-            array_push($errors,"File is not an image.");
+            add_flash_message("File is not an image.");
             $uploadOk = 0;
         }
     }
 
     if ($_FILES["fileToUpload"]["size"] > 500000) {
-        array_push($errors, "Your file is too large.");
+        add_flash_message("File is too large.");
         $uploadOk = 0;
     }
 
     if (
         $imageFileType != "jpg" && $imageFileType != "png"
     ) {
-        array_push($errors, "Only JPG and PNG files are allowed");
+        add_flash_message("Sorry, only JPG and PNG files are allowed.");
         $uploadOk = 0;
     }
 
     if ($uploadOk === 0) {
-        array_push($errors, "You need add image !");
+        add_flash_message("You need add image !");
     } else {
         if (!move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
-            array_push($errors, "File is not uploaded !");
+            add_flash_message("Sorry, there was an error uploading your file.");
         }
     }
+} else {
+    add_flash_message("Add image please and try again.");
 }

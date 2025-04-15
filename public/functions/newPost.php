@@ -7,20 +7,23 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $userID = $_SESSION['userID'];
 
     if ($title === "" || $content === "") {
-        array_push($errors, "Title and Content cannot be empty.");
+        add_flash_message("Title and Content cannot be empty.");
     } else {
 
         require "functions/saveImage.php";
-        require "databaseconection.php";
-        try {
+        if ($uploadOk === 1) {
+            require "databaseconection.php";
+            try {
 
-            $stmt = $pdo->prepare("INSERT INTO blog (title, content, image, user_id) VALUES (:title, :content, :image, :user_id)");
-            $stmt->execute(["title" => $title, "content" => $content, "image" => $image, "user_id" => $userID]);
-            header("Location: ../index.php");
-            exit();
+                $stmt = $pdo->prepare("INSERT INTO blog (title, content, image, user_id) VALUES (:title, :content, :image, :user_id)");
+                $stmt->execute(["title" => $title, "content" => $content, "image" => $image, "user_id" => $userID]);
+                header("Location: ../index.php");
+                exit();
 
-        } catch (Exception $e) {
-            array_push($errors, "An error occurred, please try again later");
+            } catch (Exception $e) {
+                add_flash_message("An error occurred, please try again later");
+            }
         }
+
     }
 }

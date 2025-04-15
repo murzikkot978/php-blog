@@ -1,4 +1,6 @@
 <?php
+session_start();
+require "functions/flashMessage.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -17,7 +19,10 @@
 <div class="flex flex-col gap-[20px] justify-center items-center w-full h-full ">
     <div class="flex flex-col w-[100%] h-[100%] justify-center items-center">
         <p class="text-[60px] w-[300px] flex justify-center">Sing up</p><br>
+
         <?php require "functions/registerUser.php"; ?>
+        <?php require "functions/displayMessage.php"; ?>
+
         <form method="post" class="custom-form">
             <label for="name" class="text-[20px]">Write your name</label>
             <input name="name" type="text" class="border-[2px]"><br>

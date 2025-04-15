@@ -1,7 +1,7 @@
 <?php
 require_once "conditions.php";
 login();
-$errors = [];
+require "functions/flashMessage.php";
 $user = checkLogin();
 require "functions/getPost.php";
 $user_id = $post['user_id'];
@@ -26,13 +26,9 @@ require "functions/editPost.php";
 <div class="flex flex-col gap-[20px] justify-center items-center w-full h-full ">
     <div class="flex flex-col w-[100%] h-[100%] justify-center items-center">
         <p class="text-[60px] w-[300px] flex justify-center">Edit post</p><br>
-        <?php if (count($errors) > 0): ?>
-            <ul>
-                <?php foreach ($errors as $error): ?>
-                    <li class="text-[red] text-[20px]"><?= $error ?></li>
-                <?php endforeach ?>
-            </ul>
-        <?php endif ?>
+
+        <?php require "functions/displayMessage.php" ?>
+
         <form class="custom-form" method="post" enctype="multipart/form-data">
             <label for="title" class="text-[20px]">Title</label>
             <input name="title" type="text" class="border-[2px] w-[500px] h-[30px]" value="<?= $post['title'] ?>"><br>
