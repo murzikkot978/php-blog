@@ -48,7 +48,7 @@ if (empty($posts)) {
                 </div>
 
                 <div class="relative">
-                    <a href="postDetail.php">
+                    <a href="postDetail.php?id=<?php echo $post['id'] ?>">
                         <img src="images/<?php echo $post["image"] ?>"
                              class="flex w-full h-auto imageGrid object-cover" alt="Post image">
                     </a>

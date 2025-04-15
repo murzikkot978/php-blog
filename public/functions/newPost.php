@@ -3,7 +3,7 @@ require_once "conditions.php";
 login();
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_STRING);
-    $content = filter_input(INPUT_POST, 'content', FILTER_SANITIZE_EMAIL);
+    $content = filter_input(INPUT_POST, 'content', FILTER_SANITIZE_STRING);
     $userID = $_SESSION['userID'];
 
     if ($title === "" || $content === "") {
