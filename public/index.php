@@ -6,6 +6,7 @@ require "functions/getBlogs.php";
 if (empty($posts)) {
     array_push($errors, "There are no blogs yet");
 }
+require "functions/deletePost.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,13 +31,13 @@ if (empty($posts)) {
     <div class="flex flex-col items-center">
         <p class="text-[60px] w-[200px] flex justify-center">Posts</p>
 
-    <?php if (count($errors) > 0): ?>
-        <ul>
-            <?php foreach ($errors as $error): ?>
-                <li class="text-[red] text-[20px]"><?= $error ?></li>
-            <?php endforeach ?>
-        </ul>
-    <?php endif ?>
+        <?php if (count($errors) > 0): ?>
+            <ul>
+                <?php foreach ($errors as $error): ?>
+                    <li class="text-[red] text-[20px]"><?= $error ?></li>
+                <?php endforeach ?>
+            </ul>
+        <?php endif ?>
     </div>
     <div class="grid grid-cols-2 gap-[10px]">
         <?php foreach ($posts as $post): ?>
@@ -48,12 +49,22 @@ if (empty($posts)) {
                 </div>
 
                 <div class="relative">
-                    <a href="postDetail.php?id=<?php echo $post['id'] ?>">
+                    <a href="postDetail.php?id=<?= $post['id'] ?>">
                         <img src="images/<?php echo $post["image"] ?>"
                              class="flex w-full h-auto imageGrid object-cover" alt="Post image">
                     </a>
-                    <a href="postEdition.php" class="absolute logoEdit"><img src="logos/logoEdit.png"
-                                                                             alt="Logo edit"></a>
+                    <a href="postEdition.php?id=<?= $post["id"] ?>"
+                       class="absolute flex w-[30px] h-auto top-[-37px] left-[10px]"><img src="logos/logoEdit.png"
+                                                                                          alt="Logo edit">
+                    </a>
+                    <form method="post">
+                        <input type="hidden" value="<?= $post['id'] ?>" name="deletePost">
+                        <input type="hidden" value="<?= $post['image'] ?>" name="deleteImage">
+                        <button type="submit" name="delete"
+                                class="absolute flex w-[30px] h-auto top-[-37px] left-[60px]"><img
+                                    src="logos/logoCorbeille.png"
+                                    alt="Logo delete"></button>
+                    </form>
                 </div>
             </div>
         <?php endforeach ?>

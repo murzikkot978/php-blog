@@ -2,9 +2,7 @@
 require_once "conditions.php";
 login();
 $errors = [];
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    require "functions/newPost.php";
-}
+require "functions/newPost.php";
 
 ?>
 <!DOCTYPE html>
