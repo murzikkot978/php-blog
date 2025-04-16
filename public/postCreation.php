@@ -2,7 +2,6 @@
 require_once "conditions.php";
 login();
 require "functions/flashMessage.php";
-$errors = [];
 $user = checkLogin();
 connection($user);
 require "functions/newPost.php";

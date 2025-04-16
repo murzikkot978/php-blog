@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     } else {
 
         require "functions/saveImage.php";
-        if ($uploadOk === 1) {
+        if ($image) {
             require "databaseconection.php";
             try {
 

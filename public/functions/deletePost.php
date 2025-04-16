@@ -1,6 +1,5 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    var_dump($_POST);
     $deletePostId = filter_input(INPUT_POST, 'deletePost');
     $deleteImage = filter_input(INPUT_POST, 'deleteImage', FILTER_SANITIZE_STRING);
     if (unlink("./images/" . $deleteImage)) {

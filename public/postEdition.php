@@ -2,12 +2,12 @@
 require_once "conditions.php";
 login();
 require "functions/flashMessage.php";
-$user = checkLogin();
 require "functions/getPost.php";
+require "functions/editPost.php";
+$user = checkLogin();
 $user_id = $post['user_id'];
 connection($user);
 verificationID($user_id);
-require "functions/editPost.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
