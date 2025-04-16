@@ -6,8 +6,9 @@ require "functions/getPost.php";
 require "functions/editPost.php";
 $user = checkLogin();
 $user_id = $post['user_id'];
+$admin = $_SESSION['admin'];
 connection($user);
-verificationID($user_id);
+verificationID($user_id, $admin);
 ?>
 <!DOCTYPE html>
 <html lang="en">

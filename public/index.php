@@ -50,7 +50,7 @@ require "functions/deletePost.php";
                         <img src="images/<?php echo $post["image"] ?>"
                              class="flex w-full h-auto imageGrid object-cover" alt="Post image">
                     </a>
-                    <?php if ($user && $user === $post['user_id']): ?>
+                    <?php if ($user && ($user === $post['user_id'] || $_SESSION['admin'] === 1)): ?>
                         <a href="postEdition.php?id=<?= $post["id"] ?>"
                            class="absolute flex w-[30px] h-auto top-[-37px] left-[10px]"><img src="logos/logoEdit.png"
                                                                                               alt="Logo edit">
