@@ -15,6 +15,9 @@ logout();
                 <div class="flex gap-[20px]">
                     <a href="postCreation.php" class="flex text-[20px]">postCreation</a>
                 </div>
+                <div>
+                    <a href="userProfile.php" class="flex text-[20px]">My Profile</a>
+                </div>
                 <form method="post">
                     <button type="submit" name="logout" value="logout" class="flex text-[20px]">log out</button>
                 </form>

@@ -7,7 +7,8 @@ create table users
     name     text not null,
     email    text not null unique,
     password text not null,
-    admin    int not null
+    admin    int  not null,
+    photo    text not null
 );
 
 create table blog
