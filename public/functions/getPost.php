@@ -7,6 +7,6 @@ if ($_SERVER["REQUEST_METHOD"] === "GET") {
         $stmt->execute(['id' => $id]);
         $post = $stmt->fetch();
     } catch (Exception $e) {
-        array_push($errors, "An error occurred, please try again later");
+        add_flash_message("An error occurred, please try again later");
     }
 }

@@ -1,6 +1,6 @@
 <?php
 $errors = [];
-if ($_SERVER['REQUEST_METHOD'] == "POST") {
+if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
     $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_SPECIAL_CHARS);
 
@@ -15,11 +15,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             header("Location: index.php");
             exit();
         } else {
-            array_push($errors, "Try again");
+            add_flash_message("Try again");
         }
 
     } catch (Exception $e) {
-        array_push($errors, "An error occurred, please try again later");
+        add_flash_message("An error occurred, please try again later");
     }
 }
 ?>

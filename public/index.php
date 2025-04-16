@@ -2,10 +2,11 @@
 $errors = [];
 require_once "conditions.php";
 login();
+require "functions/flashMessage.php";
 $user = checkLogin();
 require "functions/getBlogs.php";
 if (empty($posts)) {
-    array_push($errors, "There are no blogs yet");
+    add_flash_message("There are no blogs yet");
 }
 require "functions/deletePost.php";
 ?>
@@ -32,13 +33,8 @@ require "functions/deletePost.php";
     <div class="flex flex-col items-center">
         <p class="text-[60px] w-[200px] flex justify-center">Posts</p>
 
-        <?php if (count($errors) > 0): ?>
-            <ul>
-                <?php foreach ($errors as $error): ?>
-                    <li class="text-[red] text-[20px]"><?= $error ?></li>
-                <?php endforeach ?>
-            </ul>
-        <?php endif ?>
+        <?php require "functions/displayMessage.php" ?>
+
     </div>
     <div class="grid grid-cols-2 gap-[10px]">
         <?php foreach ($posts as $post): ?>

@@ -19,11 +19,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             header("Location: login.php");
             exit();
         } else {
-            array_push($errors, "Email already exists");
+            add_flash_message("Email already exists");
         }
 
     } catch (Exception $e) {
-        array_push($errors, "An error occurred, please try again later");
+        add_flash_message("An error occurred, please try again later");
     }
 }
 ?>
