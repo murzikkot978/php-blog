@@ -14,8 +14,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $user = $cheking->fetch();
         if (empty($user)) {
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-            $stmt = $pdo->prepare("INSERT INTO users (name, email, password) VALUES (:name, :email, :password)");
-            $stmt->execute(["name" => $name, "email" => $email, "password" => $hashed_password]);
+            $stmt = $pdo->prepare("INSERT INTO users (name, email, password, admin) VALUES (:name, :email, :password, :admin)");
+            $stmt->execute(["name" => $name, "email" => $email, "password" => $hashed_password, "admin" => '0']);
             header("Location: login.php");
             exit();
         } else {

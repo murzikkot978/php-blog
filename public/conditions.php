@@ -46,9 +46,9 @@ function connection($user)
     }
 }
 
-function verificationID($user_id)
+function verificationID($user_id, $admin)
 {
-    if ($_SESSION['userID'] !== $user_id) {
+    if ($_SESSION['userID'] !== $user_id && $admin !== 1) {
         header("Location: index.php");
         exit();
     }
