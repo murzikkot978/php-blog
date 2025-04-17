@@ -29,24 +29,24 @@ require "functions/changeRole.php";
 <div class="pages flex-col gap-5">
     <p class="text-6xl w-full flex justify-center">Users profiles</p><br>
     <?php require "functions/displayMessage.php" ?>
-    <?php foreach ($allUsers as $users): ?>
+    <?php foreach ($allUsers as $oneUser): ?>
         <div class="custom-form">
             <div class="flex w-full">
-                <div class="flex w-1/2 justify-center"><img src="userPhoto/<?= $users['photo'] ?>"
+                <div class="flex w-1/2 justify-center"><img src="userPhoto/<?= $oneUser['photo'] ?>"
                                                             class="h-50 w-50  rounded-full"></div>
                 <div class="flex flex-col justify-center items-left w-1/2">
-                    <p class="text-4xl">Name : <?= $users['name'] ?></p>
-                    <p class="text-4xl">Email : <?= $users['email'] ?></p>
-                    <?php if ($users['admin'] === 1): ?>
+                    <p class="text-4xl">Name : <?= $oneUser['name'] ?></p>
+                    <p class="text-4xl">Email : <?= $oneUser['email'] ?></p>
+                    <?php if ($oneUser['admin'] === 1): ?>
                         <p class="text-4xl">Role : admin </p>
                     <?php else: ?>
                         <p class="text-4xl">Role : user </p>
                     <?php endif; ?>
-                    <?php if ($user !== $users['id']): ?>
+                    <?php if ($user !== $oneUser['id']): ?>
                         <form method="post">
                             <button class="text-xl border-2 w-40">Change role</button>
-                            <input type="hidden" name="userID" value="<?= $users['id'] ?>">
-                            <input type="hidden" name="userRole" value="<?= $users['admin'] ?>">
+                            <input type="hidden" name="userID" value="<?= $oneUser['id'] ?>">
+                            <input type="hidden" name="userRole" value="<?= $oneUser['admin'] ?>">
                         </form>
                     <?php endif ?>
 

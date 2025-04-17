@@ -23,7 +23,11 @@ require "functions/getPost.php";
 
     <div class="flex flex-col justify-center">
         <p class="text-2xl font-[700]">Create at : <?= $post["create_at"] ?></p>
-        <p class="text-2xl font-[700]">Created by : <?= $post["name"] ?></p>
+        <?php if (isset($post['name'])): ?>
+            <p class="text-2xl font-[700]">Created by : <?= $post["name"] ?></p>
+        <?php else: ?>
+            <p class="text-2xl font-[700] text-red-500">Created by : User deleted</p>
+        <?php endif ?>
     </div>
     <div class="flex flex-col gap-5 items-center">
         <p class="flex text-5xl font-[1000]"><?= $post["title"] ?></p>

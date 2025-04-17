@@ -8,6 +8,8 @@ require "functions/deletePost.php";
 $id = checkLogin();
 require "functions/databaseconection.php";
 require "functions/getUser.php";
+require "functions/deleteUser.php";
+logout();
 $numberPosts = count($posts);
 ?>
 
@@ -32,6 +34,12 @@ $numberPosts = count($posts);
         <a href="editUserProfile.php"
            class="flex border-2 bg-[darkslategray] text-[white] text-2xl w-48 justify-center">Edit my
             profile</a>
+    </form>
+    <form method="post" class="flex w-full justify-center">
+        <button type="submit" name="deletePrifile" value="deletePrifile"
+                class="border-2 bg-[darkslategray] text-[white] text-2xl w-44 justify-center">Delete profile
+        </button>
+
     </form>
     <div class="custom-form">
         <div class="flex w-full justify-around">
@@ -64,7 +72,7 @@ $numberPosts = count($posts);
                     <?php if ($user && ($user === $post['user_id'] || $_SESSION['admin'] === 1)): ?>
                         <a href="postEdition.php?id=<?= $post["id"] ?>"
                            class="absolute flex w-6 h-auto -top-[30px] left-[10px]"><img src="logos/logoEdit.png"
-                                                                                              alt="Logo edit">
+                                                                                         alt="Logo edit">
                         </a>
                         <form method="post">
                             <input type="hidden" value="<?= $post['id'] ?>" name="deletePost">
