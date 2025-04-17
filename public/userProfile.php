@@ -25,33 +25,33 @@ $numberPosts = count($posts);
 <body>
 
 <?php require "navigationBar.php" ?>
-<div class="pages flex-col gap-[20px]">
+<div class="pages flex-col gap-5">
     <?php require "functions/displayMessage.php" ?>
-    <p class="text-[60px] w-full flex justify-center">User profile</p><br>
+    <p class="text-6xl w-full flex justify-center">User profile</p><br>
     <form method="post" class="flex w-full justify-center" enctype="multipart/form-data">
         <a href="editUserProfile.php"
-           class="flex border-[2px] bg-[darkslategray] text-[white] text-[20px] w-[140px] justify-center">Edit my
+           class="flex border-2 bg-[darkslategray] text-[white] text-2xl w-48 justify-center">Edit my
             profile</a>
     </form>
     <div class="custom-form">
         <div class="flex w-full justify-around">
             <div class="flex w-auto justify-center"><img src="userPhoto/<?= $userInformation['photo'] ?>"
-                                                         class="h-[250px] w-[250px]  rounded-full"></div>
+                                                         class="h-64 w-64  rounded-full"></div>
             <div class="flex flex-col justify-center w-auto">
-                <p class="text-[35px]">Name : <?= $userInformation['name'] ?></p>
-                <p class="text-[35px]">Email : <?= $userInformation['email'] ?></p>
-                <p class="text-[35px]">Posts created : <?= $numberPosts ?></p>
+                <p class="text-4xl">Name : <?= $userInformation['name'] ?></p>
+                <p class="text-4xl">Email : <?= $userInformation['email'] ?></p>
+                <p class="text-4xl">Posts created : <?= $numberPosts ?></p>
             </div>
 
         </div>
 
     </div>
 
-    <div class="grid grid-cols-2 gap-[10px]">
+    <div class="grid grid-cols-2 gap-2.5">
         <?php foreach ($posts as $post): ?>
             <div class="w-full h-auto ">
                 <div class="w-full flex flex-col items-center colorGrid">
-                    <p class="text-center  text-[30px]">
+                    <p class="text-center  text-3xl">
                         <?= $post['title'] ?>
                     </p>
                 </div>
@@ -63,14 +63,14 @@ $numberPosts = count($posts);
                     </a>
                     <?php if ($user && ($user === $post['user_id'] || $_SESSION['admin'] === 1)): ?>
                         <a href="postEdition.php?id=<?= $post["id"] ?>"
-                           class="absolute flex w-[30px] h-auto top-[-37px] left-[10px]"><img src="logos/logoEdit.png"
+                           class="absolute flex w-6 h-auto top-[-30px] left-[10px]"><img src="logos/logoEdit.png"
                                                                                               alt="Logo edit">
                         </a>
                         <form method="post">
                             <input type="hidden" value="<?= $post['id'] ?>" name="deletePost">
                             <input type="hidden" value="<?= $post['image'] ?>" name="deleteImage">
                             <button type="submit" name="delete"
-                                    class="absolute flex w-[30px] h-auto top-[-37px] left-[60px]"><img
+                                    class="absolute flex w-6 h-auto top-[-30px] left-[50px]"><img
                                         src="logos/logoCorbeille.png"
                                         alt="Logo delete"></button>
                         </form>

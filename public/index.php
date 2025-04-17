@@ -26,21 +26,21 @@ require "functions/deletePost.php";
 <?php require "navigationBar.php" ?>
 
 <div class="pages flex-col gap-[20px]">
-    <p class="text-[60px] w-[300px]">PHP Blog</p>
+    <p class="text-6xl w-2xl">PHP Blog</p>
     <div>
-        <p class="text-[30px]">On this page you can see all blogs what we have on our site</p>
+        <p class="text-3xl">On this page you can see all blogs what we have on our site</p>
     </div>
     <div class="flex flex-col items-center">
-        <p class="text-[60px] w-[200px] flex justify-center">Posts</p>
+        <p class="text-6xl w-52 flex justify-center">Posts</p>
 
         <?php require "functions/displayMessage.php" ?>
 
     </div>
-    <div class="grid grid-cols-2 gap-[10px]">
+    <div class="grid grid-cols-2 gap-2.5">
         <?php foreach ($posts as $post): ?>
             <div class="w-full h-auto ">
                 <div class="w-full flex flex-col items-center colorGrid">
-                    <p class="text-center  text-[30px]">
+                    <p class="text-center  text-3xl">
                         <?php echo $post['title'] ?>
                     </p>
                 </div>
@@ -52,14 +52,14 @@ require "functions/deletePost.php";
                     </a>
                     <?php if ($user && ($user === $post['user_id'] || $_SESSION['admin'] === 1)): ?>
                         <a href="postEdition.php?id=<?= $post["id"] ?>"
-                           class="absolute flex w-[30px] h-auto top-[-37px] left-[10px]"><img src="logos/logoEdit.png"
+                           class="absolute flex w-6 h-auto top-[-30px] left-[10px]"><img src="logos/logoEdit.png"
                                                                                               alt="Logo edit">
                         </a>
                         <form method="post">
                             <input type="hidden" value="<?= $post['id'] ?>" name="deletePost">
                             <input type="hidden" value="<?= $post['image'] ?>" name="deleteImage">
                             <button type="submit" name="delete"
-                                    class="absolute flex w-[30px] h-auto top-[-37px] left-[60px]"><img
+                                    class="absolute flex w-6 h-auto top-[-30px] left-[50px]"><img
                                         src="logos/logoCorbeille.png"
                                         alt="Logo delete"></button>
                         </form>

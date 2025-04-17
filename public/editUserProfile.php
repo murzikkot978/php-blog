@@ -23,20 +23,20 @@ connection($user);
 
 <?php require "navigationBar.php" ?>
 
-<div class="flex flex-col gap-[20px] justify-center items-center w-full h-full ">
-    <div class="flex flex-col w-[100%] h-[100%] justify-center items-center">
-        <p class="text-[60px] w-[600px] flex justify-center">Edit user information</p><br>
+<div class="flex flex-col gap-5 justify-center items-center w-full h-full ">
+    <div class="flex flex-col w-full h-full justify-center items-center">
+        <p class="text-6xl w-2xl flex justify-center">Edit user information</p><br>
 
         <?php require "functions/displayMessage.php" ?>
 
         <form method="post" class="custom-form" enctype="multipart/form-data">
-            <label for="name" class="text-[20px]">Write your new name</label>
-            <input name="name" type="text" class="border-[2px]" value="<?= $userInformation['name'] ?>"><br>
-            <label for="email" class="text-[20px]">Write your new email</label>
-            <input name="email" type="email" class="border-[2px]" value="<?= $userInformation['email'] ?>"><br>
-            <label for="image" class="text-[20px]">Chose new photo</label>
+            <label for="name" class="text-xl">Write your new name</label>
+            <input name="name" type="text" class="border-2" value="<?= $userInformation['name'] ?>"><br>
+            <label for="email" class="text-2">Write your new email</label>
+            <input name="email" type="email" class="border-2" value="<?= $userInformation['email'] ?>"><br>
+            <label for="image" class="text-2">Chose new photo</label>
             <input name="photo" type="file" class="border-[2px]"><br>
-            <button type="submit" class="border-[2px] w-[100px]">Submit</button>
+            <button type="submit" class="border-2 w-28">Submit</button>
             <input type="hidden" name="userID" value="<?= $userInformation['id'] ?>">
             <input type="hidden" name="oldPhoto" value="<?= $userInformation['photo'] ?>">
         </form>

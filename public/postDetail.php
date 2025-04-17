@@ -22,13 +22,13 @@ require "functions/getPost.php";
     <?php require "functions/displayMessage.php" ?>
 
     <div class="flex flex-col justify-center">
-        <p class="text-[20px] font-[700]">Create at : <?= $post["create_at"] ?></p>
-        <p class="text-[20px] font-[700]">Created by : <?= $post["name"] ?></p>
+        <p class="text-2xl font-[700]">Create at : <?= $post["create_at"] ?></p>
+        <p class="text-2xl font-[700]">Created by : <?= $post["name"] ?></p>
     </div>
-    <div class="flex flex-col gap-[20px] items-center">
-        <p class="flex text-[50px] font-[1000]"><?= $post["title"] ?></p>
-        <img src="images/<?= $post["image"] ?>" class="flex w-full rounded-[20px]">
-        <p class="flex text-[25px]"><?= $post["content"] ?></p>
+    <div class="flex flex-col gap-5 items-center">
+        <p class="flex text-5xl font-[1000]"><?= $post["title"] ?></p>
+        <img src="images/<?= $post["image"] ?>" class="flex w-full rounded-3xl">
+        <p class="flex text-2xl"><?= $post["content"] ?></p>
     </div>
 </div>
 
