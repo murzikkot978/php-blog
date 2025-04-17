@@ -11,7 +11,8 @@ function logout()
 {
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $logout = filter_input(INPUT_POST, 'logout', FILTER_SANITIZE_STRING);
-        if (isset($_POST[$logout])) {
+        $deletePrifile = filter_input(INPUT_POST, 'deletePrifile', FILTER_SANITIZE_STRING);
+        if (isset($_POST[$logout]) || isset($_POST[$deletePrifile])) {
             session_start();
             session_unset();
 
