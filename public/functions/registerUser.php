@@ -1,5 +1,4 @@
 <?php
-$errors = [];
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
@@ -27,13 +26,3 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     }
 }
 ?>
-
-<div>
-    <?php if (count($errors) > 0): ?>
-        <ul>
-            <?php foreach ($errors as $error): ?>
-                <li class="text-[red] text-[20px]"><?= $error ?></li>
-            <?php endforeach ?>
-        </ul>
-    <?php endif ?>
-</div>
