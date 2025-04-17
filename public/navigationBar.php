@@ -6,8 +6,8 @@ $admin = $_SESSION['admin'];
 logout();
 ?>
 
-<header class="header">
-    <nav class="navbar">
+<header class="header mb-6">
+    <nav class="navbar ">
         <div>
             <a href="index.php" class="logoHome"><img src="logos/logoHome.png"></a>
         </div>

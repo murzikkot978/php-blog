@@ -52,14 +52,14 @@ require "functions/deletePost.php";
                     </a>
                     <?php if ($user && ($user === $post['user_id'] || $_SESSION['admin'] === 1)): ?>
                         <a href="postEdition.php?id=<?= $post["id"] ?>"
-                           class="absolute flex w-6 h-auto top-[-30px] left-[10px]"><img src="logos/logoEdit.png"
+                           class="absolute flex w-6 h-auto -top-[30px] left-[10px]"><img src="logos/logoEdit.png"
                                                                                               alt="Logo edit">
                         </a>
                         <form method="post">
                             <input type="hidden" value="<?= $post['id'] ?>" name="deletePost">
                             <input type="hidden" value="<?= $post['image'] ?>" name="deleteImage">
                             <button type="submit" name="delete"
-                                    class="absolute flex w-6 h-auto top-[-30px] left-[50px]"><img
+                                    class="absolute flex w-6 h-auto -top-[30px] left-[50px]"><img
                                         src="logos/logoCorbeille.png"
                                         alt="Logo delete"></button>
                         </form>

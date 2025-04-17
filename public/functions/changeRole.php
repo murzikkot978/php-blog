@@ -6,12 +6,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     $userID = filter_input(INPUT_POST, 'userID', FILTER_SANITIZE_NUMBER_INT);
     $userRole = filter_input(INPUT_POST, 'userRole', FILTER_SANITIZE_NUMBER_INT);
-    $admin = ($userRole === '0') ? 1 : 0;
+    $admin = $userRole === '0';
     if ($verification != $userID) {
         require "databaseconection.php";
         try {
             $stmt = $pdo->prepare("UPDATE users SET admin = :admin WHERE id = :id");
-            $stmt->execute(["admin" => $admin, "id" => $userID]);
+            $stmt->execute(["admin" => (int)$admin, "id" => $userID]);
             header("Location: ../allUsersDetaile.php");
             exit();
         } catch (Exception $e) {
