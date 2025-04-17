@@ -9,6 +9,7 @@ $user_id = $post['user_id'];
 $admin = $_SESSION['admin'];
 connection($user);
 verificationID($user_id, $admin);
+require "functions/changeRole.php";
 ?>
 
 <!DOCTYPE html>
@@ -26,16 +27,27 @@ verificationID($user_id, $admin);
 
 <?php require "navigationBar.php" ?>
 <div class="pages flex-col gap-[20px]">
-    <?php require "functions/displayMessage.php" ?>
     <p class="text-[60px] w-full flex justify-center">Users profiles</p><br>
+    <?php require "functions/displayMessage.php" ?>
     <?php foreach ($allUsers as $user): ?>
         <div class="custom-form">
             <div class="flex w-full">
                 <div class="flex w-[50%] justify-center"><img src="userPhoto/<?= $user['photo'] ?>"
-                                                             class="h-[200px] w-[200px]  rounded-full"></div>
-                <div class="flex flex-col justify-center w-[50%]">
+                                                              class="h-[200px] w-[200px]  rounded-full"></div>
+                <div class="flex flex-col justify-left w-[50%]">
                     <p class="text-[35px]">Name : <?= $user['name'] ?></p>
                     <p class="text-[35px]">Email : <?= $user['email'] ?></p>
+                    <?php if ($user['admin'] === 1): ?>
+                        <p class="text-[35px]">Role : admin </p>
+                    <?php else: ?>
+                        <p class="text-[35px]">Role : user </p>
+                    <?php endif; ?>
+                    <form method="post">
+                        <button class="text-[20px] border-[2px] w-[150px]">Change role</button>
+                        <input type="hidden" name="userID" value="<?= $user['id'] ?>">
+                        <input type="hidden" name="userRole" value="<?= $user['admin'] ?>">
+                    </form>
+
                 </div>
 
             </div>
